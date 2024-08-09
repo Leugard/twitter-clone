@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/components/my_drawer_tile.dart';
+import 'package:twitter_clone/pages/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -9,43 +10,54 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
       child: SafeArea(
-        child: Column(
-          children: [
-            // App logo
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
-              child: Icon(
-                Icons.person,
-                size: 72,
-                color: Theme.of(context).colorScheme.primary,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+            children: [
+              // App logo
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50.0),
+                child: Icon(
+                  Icons.person,
+                  size: 72,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
-            ),
 
-            // Divider line
-            Divider(
-              indent: 25,
-              endIndent: 25,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
+              // Divider line
+              Divider(color: Theme.of(context).colorScheme.secondary),
 
-            // Home list title
-            MyDrawerTile(
-              title: 'H O M E',
-              icon: Icons.home,
-              onTap: () {},
-            ),
+              const SizedBox(height: 10),
 
-            // Profile list tile
+              // Home list title
+              MyDrawerTile(
+                title: 'H O M E',
+                icon: Icons.home,
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
 
-            // Search list tile
+              // Profile list tile
 
-            // Settings list tile
-            MyDrawerTile(
-              title: 'S E T T I N G S',
-              icon: Icons.settings,
-              onTap: () {},
-            )
-          ],
+              // Search list tile
+
+              // Settings list tile
+              MyDrawerTile(
+                title: 'S E T T I N G S',
+                icon: Icons.settings,
+                onTap: () {
+                  Navigator.pop(context);
+
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsPage(),
+                      ));
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
